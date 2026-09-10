@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Para Você ❤️</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: #2b2b2b;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      font-family: 'Courier New', Courier, monospace;
+      color: #fff;
+    }
+
+    .card {
+      background-color: #000;
+      width: 360px;
+      height: 640px;
+      border-radius: 20px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+      position: relative;
+    }
+
+    /* Área do Animação (Topo) */
+    .stage {
+      background-color: #e2d974;
+      flex: 1;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-end;
+      padding-bottom: 20px;
+    }
+
+    /* Teia do Homem-Aranha */
+    .web {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      width: 2px;
+      background-color: #fff;
+      height: 180px;
+      animation: dropWeb 3s ease forwards;
+    }
+
+    /* Homem-Aranha (imagem) */
+    .spider-man {
+      width: 160px;
+      height: 160px;
+      background-image: url("homem aranha_transparent.png");
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+      position: absolute;
+      top: 180px;
+      left: 50%;
+      transform: translateX(-50%) translateY(-300px);
+      animation: dropSpider 3s ease forwards;
+    }
+
+    /* Coração Pixel Art */
+    .pixel-heart {
+      width: 6px;
+      height: 6px;
+      background: #ff4d6d;
+      margin-bottom: 25px;
+      box-shadow:
+        /* Linha 1 */
+        -12px -18px 0 #ff4d6d, -6px -18px 0 #ff4d6d, 6px -18px 0 #ff4d6d, 12px -18px 0 #ff4d6d,
+        /* Linha 2 */
+        -18px -12px 0 #ff4d6d, -12px -12px 0 #ff4d6d, -6px -12px 0 #ff4d6d, 0 -12px 0 #ff4d6d, 6px -12px 0 #ff4d6d, 12px -12px 0 #ff4d6d, 18px -12px 0 #ff4d6d,
+        /* Linha 3 */
+        -18px -6px 0 #ff4d6d, -12px -6px 0 #ff4d6d, -6px -6px 0 #ff4d6d, 0 -6px 0 #ff4d6d, 6px -6px 0 #ff4d6d, 12px -6px 0 #ff4d6d, 18px -6px 0 #ff4d6d,
+        /* Linha 4 */
+        -18px 0 0 #ff4d6d, -12px 0 0 #ff4d6d, -6px 0 0 #ff4d6d, 0 0 0 #ff4d6d, 6px 0 0 #ff4d6d, 12px 0 0 #ff4d6d, 18px 0 0 #ff4d6d,
+        /* Funil / Ponta */
+        -12px 6px 0 #ff4d6d, -6px 6px 0 #ff4d6d, 0 6px 0 #ff4d6d, 6px 6px 0 #ff4d6d, 12px 6px 0 #ff4d6d,
+        -6px 12px 0 #ff4d6d, 0 12px 0 #ff4d6d, 6px 12px 0 #ff4d6d,
+        0 18px 0 #ff4d6d;
+    }
+
+    .love-text {
+      font-size: 28px;
+      font-weight: bold;
+      color: #ffffff;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.6);
+      letter-spacing: 2px;
+    }
+
+    /* Animações de descida */
+    @keyframes dropSpider {
+      0% { transform: translateX(-50%) translateY(-300px); }
+      100% { transform: translateX(-50%) translateY(0); }
+    }
+
+    @keyframes dropWeb {
+      0% { transform: scaleY(0); transform-origin: top; }
+      100% { transform: scaleY(1); transform-origin: top; }
+    }
+
+    /* Área do Editor de Código (Base) */
+    .code-editor {
+      background-color: #121212;
+      padding: 15px;
+      font-size: 11px;
+      line-height: 1.5;
+      color: #a9b7c6;
+      border-top: 2px solid #222;
+    }
+
+    .dots {
+      display: flex;
+      gap: 6px;
+      margin-bottom: 10px;
+    }
+
+    .dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+    }
+    .red { background: #ff5f56; }
+    .yellow { background: #ffbd2e; }
+    .green { background: #27c93f; }
+
+    .keyword { color: #cc7832; }
+    .selector { color: #ff8e62; }
+    .property { color: #9876aa; }
+    .value { color: #6a8759; }
+    .string { color: #6a8759; }
+  </style>
+</head>
+<body>
+
+  <div class="card">
+    <div class="stage">
+      <div class="web"></div>
+      <div class="spider-man"></div>
+      <div class="pixel-heart"></div>
+      <div class="love-text">Eu te amo</div>
+    </div>
+
+    <div class="code-editor">
+      <div class="dots">
+        <div class="dot red"></div>
+        <div class="dot yellow"></div>
+        <div class="dot green"></div>
+      </div>
+      <code>
+        <span class="selector">.spider-man</span> {<br>
+        &nbsp;&nbsp;<span class="property">width</span>: <span class="value">8px</span>;<br>
+        &nbsp;&nbsp;<span class="property">animation</span>: <span class="value">move 3s ease</span>;<br>
+        }<br><br>
+        <span class="selector">.love-message</span> {<br>
+        &nbsp;&nbsp;<span class="property">content</span>: <span class="string">"Eu te amo"</span>;<br>
+        &nbsp;&nbsp;<span class="property">color</span>: <span class="value">#ffffff</span>;<br>
+        }
+      </code>
+    </div>
+  </div>
+
+  <audio id="bgm" src="https://archive.org/download/post-malone-swae-lee-sunflower-spider-man-int-mp-3-128-k/Post%20Malone_%20Swae%20Lee%20-%20Sunflower%20(Spider-Man_%20Int(MP3_128K).mp3" loop></audio>
+  <button id="bgm-toggle" style="position: fixed; bottom: 12px; right: 12px; width: 34px; height: 34px; border-radius: 50%; border: none; background: #1e1e1e; color: #fff; font-size: 15px; cursor: pointer; box-shadow: 0 2px 8px rgba(0,0,0,0.4); z-index: 10;">🔊</button>
+  <script>
+    const bgm = document.getElementById('bgm');
+    const bgmToggle = document.getElementById('bgm-toggle');
+    bgm.play().catch(() => {});
+    bgmToggle.addEventListener('click', () => {
+      if (bgm.paused) {
+        bgm.play();
+        bgmToggle.textContent = '🔊';
+      } else {
+        bgm.pause();
+        bgmToggle.textContent = '🔇';
+      }
+    });
+  </script>
+</body>
+</html>
