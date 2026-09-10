@@ -53,6 +53,12 @@
       background-color: #fff;
       height: 180px;
       animation: dropWeb 3s ease forwards;
+      animation-play-state: paused;
+    }
+
+    body.playing .web,
+    body.playing .spider-man {
+      animation-play-state: running;
     }
 
     /* Homem-Aranha (imagem) */
@@ -68,6 +74,39 @@
       left: 50%;
       transform: translateX(-50%) translateY(-300px);
       animation: dropSpider 3s ease forwards;
+      animation-play-state: paused;
+    }
+
+    .intro-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.8);
+      border-radius: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      color: #fff;
+      font-family: 'Courier New', Courier, monospace;
+      text-align: center;
+      cursor: pointer;
+      z-index: 20;
+      transition: opacity 0.4s ease;
+    }
+
+    .intro-overlay .intro-icon {
+      font-size: 40px;
+    }
+
+    .intro-overlay .intro-text {
+      font-size: 16px;
+      letter-spacing: 1px;
+    }
+
+    .intro-overlay.hide {
+      opacity: 0;
+      pointer-events: none;
     }
 
     /* Coração Pixel Art */
@@ -169,6 +208,11 @@
         }
       </code>
     </div>
+
+    <div class="intro-overlay" id="intro-overlay">
+      <div class="intro-icon">💌</div>
+      <div class="intro-text">Toque para abrir</div>
+    </div>
   </div>
 
   <audio id="bgm" src="https://archive.org/download/post-malone-swae-lee-sunflower-spider-man-int-mp-3-128-k/Post%20Malone_%20Swae%20Lee%20-%20Sunflower%20(Spider-Man_%20Int(MP3_128K).mp3" loop></audio>
@@ -176,7 +220,14 @@
   <script>
     const bgm = document.getElementById('bgm');
     const bgmToggle = document.getElementById('bgm-toggle');
-    bgm.play().catch(() => {});
+    const overlay = document.getElementById('intro-overlay');
+
+    overlay.addEventListener('click', () => {
+      document.body.classList.add('playing');
+      overlay.classList.add('hide');
+      bgm.play().catch(() => {});
+    }, { once: true });
+
     bgmToggle.addEventListener('click', () => {
       if (bgm.paused) {
         bgm.play();
