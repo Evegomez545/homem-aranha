@@ -2,6 +2,7 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>Para Você ❤️</title>
   <style>
     * {
@@ -15,7 +16,7 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      min-height: 100vh;
+      min-height: 100dvh;
       font-family: 'Courier New', Courier, monospace;
       color: #fff;
     }
@@ -30,6 +31,23 @@
       flex-direction: column;
       box-shadow: 0 10px 30px rgba(0,0,0,0.5);
       position: relative;
+    }
+
+    @media (max-width: 480px) {
+      body {
+        min-height: 100svh;
+      }
+
+      .card {
+        width: 100vw;
+        height: 100svh;
+        border-radius: 0;
+        box-shadow: none;
+      }
+
+      .intro-overlay {
+        border-radius: 0;
+      }
     }
 
     /* Área do Animação (Topo) */
